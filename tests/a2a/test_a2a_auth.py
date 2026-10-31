@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from openjarvis.a2a.protocol import AgentCard
-from openjarvis.a2a.server import A2AServer
+from ULTRONX.a2a.protocol import AgentCard
+from ULTRONX.a2a.server import A2AServer
 
 
 def _request():

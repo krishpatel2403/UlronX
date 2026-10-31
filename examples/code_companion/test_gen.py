@@ -4,7 +4,7 @@
 Usage::
 
     python examples/code_companion/test_gen.py \
-        --module src/openjarvis/tools/calculator.py
+        --module src/ULTRONX/tools/calculator.py
     python examples/code_companion/test_gen.py \
         --module src/app/utils.py --framework unittest
     python examples/code_companion/test_gen.py \
@@ -69,10 +69,10 @@ def main(
     to stdout.
     """
     try:
-        from openjarvis import Jarvis
+        from ULTRONX import Jarvis
     except ImportError:
         click.echo(
-            "Error: openjarvis is not installed. "
+            "Error: ULTRONX is not installed. "
             "Install it with:  uv sync --extra dev",
             err=True,
         )

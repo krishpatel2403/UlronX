@@ -9,9 +9,9 @@ from unittest import mock
 
 from click.testing import CliRunner
 
-from openjarvis.cli import cli
-from openjarvis.core.types import TelemetryRecord
-from openjarvis.telemetry.store import TelemetryStore
+from ULTRONX.cli import cli
+from ULTRONX.core.types import TelemetryRecord
+from ULTRONX.telemetry.store import TelemetryStore
 
 
 def _populate_db(db_path: Path, n: int = 3) -> None:
@@ -39,7 +39,7 @@ def _patch_config(tmp_path: Path):
     cfg = mock.MagicMock()
     cfg.telemetry.db_path = str(db_path)
     return mock.patch(
-        "openjarvis.cli.telemetry_cmd.load_config",
+        "ULTRONX.cli.telemetry_cmd.load_config",
         return_value=cfg,
     ), db_path
 

@@ -48,10 +48,10 @@ def main() -> None:
     args = parser.parse_args()
 
     try:
-        from openjarvis import Jarvis
+        from ULTRONX import Jarvis
     except ImportError:
         print(
-            "Error: openjarvis is not installed. "
+            "Error: ULTRONX is not installed. "
             "Install it with:  uv sync --extra dev",
             file=sys.stderr,
         )

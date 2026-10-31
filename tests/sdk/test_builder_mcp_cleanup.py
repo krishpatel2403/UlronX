@@ -16,18 +16,18 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from openjarvis.core.config import JarvisConfig
-from openjarvis.system.builder import SystemBuilder
+from ULTRONX.core.config import JarvisConfig
+from ULTRONX.system.builder import SystemBuilder
 
 
 @pytest.fixture
 def _mock_mcp_stack():
     """Patch MCPClient / transports / MCPToolProvider so no real I/O happens."""
     with (
-        patch("openjarvis.mcp.client.MCPClient") as MockClient,
-        patch("openjarvis.mcp.transport.StreamableHTTPTransport") as MockHttp,
-        patch("openjarvis.mcp.transport.StdioTransport") as MockStdio,
-        patch("openjarvis.tools.mcp_adapter.MCPToolProvider") as MockProvider,
+        patch("ULTRONX.mcp.client.MCPClient") as MockClient,
+        patch("ULTRONX.mcp.transport.StreamableHTTPTransport") as MockHttp,
+        patch("ULTRONX.mcp.transport.StdioTransport") as MockStdio,
+        patch("ULTRONX.tools.mcp_adapter.MCPToolProvider") as MockProvider,
     ):
         MockProvider.return_value.discover.return_value = []
         MockClient.return_value.initialize.return_value = None

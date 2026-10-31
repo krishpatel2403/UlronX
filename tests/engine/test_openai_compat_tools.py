@@ -6,9 +6,9 @@ import json
 
 import httpx
 
-from openjarvis.core.types import Message, Role
-from openjarvis.engine._openai_compat import _OpenAICompatibleEngine
-from openjarvis.engine.ollama import OllamaEngine
+from ULTRONX.core.types import Message, Role
+from ULTRONX.engine._openai_compat import _OpenAICompatibleEngine
+from ULTRONX.engine.ollama import OllamaEngine
 
 # ---------------------------------------------------------------------------
 # _OpenAICompatibleEngine tests

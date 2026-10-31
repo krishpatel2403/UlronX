@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from openjarvis.cli.dashboard import DashboardApp
+from ULTRONX.cli.dashboard import DashboardApp
 
 
 class TestDashboard:

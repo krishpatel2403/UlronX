@@ -1,6 +1,6 @@
 """Tests for the browser_assistant dataset."""
 
-from openjarvis.evals.datasets.browser_assistant import (
+from ULTRONX.evals.datasets.browser_assistant import (
     BrowserAssistantDataset,
 )
 

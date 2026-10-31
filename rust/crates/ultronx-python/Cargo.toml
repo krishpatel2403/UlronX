@@ -1,0 +1,32 @@
+[package]
+name = "ULTRONX-python"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ULTRONX_rust"
+crate-type = ["cdylib"]
+
+[dependencies]
+ULTRONX-core = { path = "../ULTRONX-core" }
+ULTRONX-engine = { path = "../ULTRONX-engine" }
+ULTRONX-security = { path = "../ULTRONX-security" }
+ULTRONX-tools = { path = "../ULTRONX-tools" }
+ULTRONX-agents = { path = "../ULTRONX-agents" }
+ULTRONX-traces = { path = "../ULTRONX-traces" }
+ULTRONX-telemetry = { path = "../ULTRONX-telemetry" }
+ULTRONX-learning = { path = "../ULTRONX-learning" }
+ULTRONX-mcp = { path = "../ULTRONX-mcp" }
+ULTRONX-sessions = { path = "../ULTRONX-sessions" }
+ULTRONX-workflow = { path = "../ULTRONX-workflow" }
+ULTRONX-skills = { path = "../ULTRONX-skills" }
+ULTRONX-recipes = { path = "../ULTRONX-recipes" }
+ULTRONX-templates = { path = "../ULTRONX-templates" }
+ULTRONX-a2a = { path = "../ULTRONX-a2a" }
+ULTRONX-scheduler = { path = "../ULTRONX-scheduler" }
+pyo3 = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+once_cell = { workspace = true }
+parking_lot = { workspace = true }

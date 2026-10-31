@@ -8,13 +8,13 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
 
-from openjarvis.agents.digest_store import DigestStore
-from openjarvis.core.types import ToolResult
+from ULTRONX.agents.digest_store import DigestStore
+from ULTRONX.core.types import ToolResult
 
 
 def test_full_digest_pipeline(tmp_path):
     """Verify collect -> synthesize -> TTS -> store -> retrieve."""
-    from openjarvis.agents.morning_digest import MorningDigestAgent
+    from ULTRONX.agents.morning_digest import MorningDigestAgent
 
     # Mock engine returns a narrative
     mock_engine = MagicMock()

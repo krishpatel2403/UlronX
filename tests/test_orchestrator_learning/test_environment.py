@@ -4,13 +4,13 @@ from __future__ import annotations
 
 import pytest
 
-from openjarvis.core.events import EventBus, EventType
-from openjarvis.core.types import ToolResult
-from openjarvis.learning.intelligence.orchestrator.environment import (
+from ULTRONX.core.events import EventBus, EventType
+from ULTRONX.core.types import ToolResult
+from ULTRONX.learning.intelligence.orchestrator.environment import (
     OrchestratorEnvironment,
 )
-from openjarvis.learning.intelligence.orchestrator.types import OrchestratorAction
-from openjarvis.tools._stubs import BaseTool, ToolSpec
+from ULTRONX.learning.intelligence.orchestrator.types import OrchestratorAction
+from ULTRONX.tools._stubs import BaseTool, ToolSpec
 
 # -- Mock tool ---------------------------------------------------------------
 

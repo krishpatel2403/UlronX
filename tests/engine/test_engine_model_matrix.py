@@ -5,11 +5,11 @@ from __future__ import annotations
 import httpx
 import pytest
 
-from openjarvis.core.registry import EngineRegistry
-from openjarvis.core.types import Message, Role
-from openjarvis.engine._base import EngineConnectionError
-from openjarvis.engine.ollama import OllamaEngine
-from openjarvis.engine.openai_compat_engines import (
+from ULTRONX.core.registry import EngineRegistry
+from ULTRONX.core.types import Message, Role
+from ULTRONX.engine._base import EngineConnectionError
+from ULTRONX.engine.ollama import OllamaEngine
+from ULTRONX.engine.openai_compat_engines import (
     AppleFmEngine,
     ExoEngine,
     LemonadeEngine,

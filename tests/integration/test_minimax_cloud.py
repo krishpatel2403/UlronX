@@ -10,9 +10,9 @@ import os
 
 import pytest
 
-from openjarvis.core.registry import EngineRegistry
-from openjarvis.core.types import Message, Role
-from openjarvis.engine.cloud import CloudEngine
+from ULTRONX.core.registry import EngineRegistry
+from ULTRONX.core.types import Message, Role
+from ULTRONX.engine.cloud import CloudEngine
 
 _MINIMAX_KEY = os.environ.get("MINIMAX_API_KEY", "")
 _skip_no_key = pytest.mark.skipif(

@@ -1,0 +1,13 @@
+[package]
+name = "ULTRONX-mcp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ULTRONX-core = { path = "../ULTRONX-core" }
+ULTRONX-tools = { path = "../ULTRONX-tools" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }

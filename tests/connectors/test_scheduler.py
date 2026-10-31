@@ -8,11 +8,11 @@ from typing import Iterator, Optional
 
 import pytest
 
-from openjarvis.connectors._stubs import BaseConnector, Document, SyncStatus
-from openjarvis.connectors.pipeline import IngestionPipeline
-from openjarvis.connectors.scheduler import SyncScheduler
-from openjarvis.connectors.store import KnowledgeStore
-from openjarvis.connectors.sync_engine import SyncEngine
+from ULTRONX.connectors._stubs import BaseConnector, Document, SyncStatus
+from ULTRONX.connectors.pipeline import IngestionPipeline
+from ULTRONX.connectors.scheduler import SyncScheduler
+from ULTRONX.connectors.store import KnowledgeStore
+from ULTRONX.connectors.sync_engine import SyncEngine
 
 # ---------------------------------------------------------------------------
 # Fixtures and helpers

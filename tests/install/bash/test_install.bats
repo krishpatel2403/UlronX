@@ -1,17 +1,17 @@
 #!/usr/bin/env bats
 
 # Requires Python with tomlkit, as does the installed application. Set
-# OPENJARVIS_TEST_PYTHON to an existing project venv when running locally.
+# ULTRONX_TEST_PYTHON to an existing project venv when running locally.
 
 setup() {
-    export OPENJARVIS_TEST_PYTHON="${OPENJARVIS_TEST_PYTHON:-$(command -v python3)}"
+    export ULTRONX_TEST_PYTHON="${ULTRONX_TEST_PYTHON:-$(command -v python3)}"
     export PYTHONPATH="$BATS_TEST_DIRNAME/../../../src"
-    unset OPENJARVIS_CONFIG XDG_DATA_HOME
+    unset ULTRONX_CONFIG XDG_DATA_HOME
     TEST_TMPDIR=$(mktemp -d)
     export FAKE_HOME="$TEST_TMPDIR/home"
     mkdir -p "$FAKE_HOME"
     export HOME="$FAKE_HOME"
-    export OPENJARVIS_HOME="$FAKE_HOME/.openjarvis"
+    export ULTRONX_HOME="$FAKE_HOME/.ULTRONX"
 
     export STUBS_DIR="$BATS_TEST_DIRNAME/stubs"
     # Use a copy of stubs without uv-style real binaries that might be on the host.
@@ -66,7 +66,7 @@ EOJ
             cat > "\$venv_path/bin/python" <<'EOJ'
 #!/usr/bin/env bash
 # Run the real persistence code using an interpreter with app dependencies.
-exec "\$OPENJARVIS_TEST_PYTHON" "\$@"
+exec "\$ULTRONX_TEST_PYTHON" "\$@"
 EOJ
             chmod +x "\$venv_path/bin/python"
         fi
@@ -90,7 +90,7 @@ teardown() {
 }
 
 assert_analytics_preference() {
-    "$OPENJARVIS_TEST_PYTHON" - "$1" "$2" "$3" <<'PY'
+    "$ULTRONX_TEST_PYTHON" - "$1" "$2" "$3" <<'PY'
 import sys
 from pathlib import Path
 
@@ -106,16 +106,16 @@ PY
     run bash "$SCRIPT" --no-bg-orchestrator --minimal
     [ "$status" -eq 0 ]
     ! grep -q '/i/v0/e/' "$CURL_STUB_LOG"
-    [ ! -f "$OPENJARVIS_HOME/anon_id" ]
-    assert_analytics_preference "$OPENJARVIS_HOME/config.toml" false false
+    [ ! -f "$ULTRONX_HOME/anon_id" ]
+    assert_analytics_preference "$ULTRONX_HOME/config.toml" false false
 }
 
 @test "explicit analytics flag sends beacons and persists enabled" {
     run bash "$SCRIPT" --no-bg-orchestrator --minimal --analytics
     [ "$status" -eq 0 ]
     grep -q '/i/v0/e/' "$CURL_STUB_LOG"
-    [ -s "$OPENJARVIS_HOME/anon_id" ]
-    assert_analytics_preference "$OPENJARVIS_HOME/config.toml" true true
+    [ -s "$ULTRONX_HOME/anon_id" ]
+    assert_analytics_preference "$ULTRONX_HOME/config.toml" true true
 }
 
 @test "Enter at dedicated terminal prompt consents before the first beacon" {
@@ -123,15 +123,15 @@ PY
     [ "$status" -eq 0 ]
     [[ "$output" == *"Press Enter or Y to consent, or N to decline"* ]]
     grep -q '"event":"install_started"' "$CURL_STUB_LOG"
-    assert_analytics_preference "$OPENJARVIS_HOME/config.toml" true true
+    assert_analytics_preference "$ULTRONX_HOME/config.toml" true true
 }
 
 @test "N at terminal prompt declines every installer beacon" {
     run python3 "$BATS_TEST_DIRNAME/run_installer_pty.py" "$SCRIPT" '["N\n"]'
     [ "$status" -eq 0 ]
     ! grep -q '/i/v0/e/' "$CURL_STUB_LOG"
-    [ ! -f "$OPENJARVIS_HOME/anon_id" ]
-    assert_analytics_preference "$OPENJARVIS_HOME/config.toml" false true
+    [ ! -f "$ULTRONX_HOME/anon_id" ]
+    assert_analytics_preference "$ULTRONX_HOME/config.toml" false true
 }
 
 @test "invalid answer retries without silently consenting" {
@@ -145,8 +145,8 @@ PY
     run python3 "$BATS_TEST_DIRNAME/run_installer_pty.py" "$SCRIPT" '["\u0004"]'
     [ "$status" -eq 0 ]
     ! grep -q '/i/v0/e/' "$CURL_STUB_LOG"
-    [ ! -f "$OPENJARVIS_HOME/anon_id" ]
-    assert_analytics_preference "$OPENJARVIS_HOME/config.toml" false false
+    [ ! -f "$ULTRONX_HOME/anon_id" ]
+    assert_analytics_preference "$ULTRONX_HOME/config.toml" false false
 }
 
 @test "declining on a rerun persists despite skipped config creation" {
@@ -158,13 +158,13 @@ PY
     [ "$status" -eq 0 ]
     ! grep -q '/i/v0/e/' "$CURL_STUB_LOG"
     ! grep -q '_bootstrap' "$JARVIS_STUB_LOG"
-    assert_analytics_preference "$OPENJARVIS_HOME/config.toml" false true
+    assert_analytics_preference "$ULTRONX_HOME/config.toml" false true
 }
 
 @test "rerun saves consent with an older CLI and preserves existing TOML" {
     run bash "$SCRIPT" --no-bg-orchestrator --minimal
     [ "$status" -eq 0 ]
-    cat > "$OPENJARVIS_HOME/config.toml" <<'TOML'
+    cat > "$ULTRONX_HOME/config.toml" <<'TOML'
 # Preserve user settings and comments.
 [engine]
 default = "ollama"
@@ -172,7 +172,7 @@ default = "ollama"
 enabled = false # Previous choice.
 flush_at_size = 7
 TOML
-    run "$OPENJARVIS_HOME/.venv/bin/jarvis" config set analytics.choice_recorded true
+    run "$ULTRONX_HOME/.venv/bin/jarvis" config set analytics.choice_recorded true
     [ "$status" -eq 1 ]
     : > "$JARVIS_STUB_LOG"
     : > "$UV_STUB_LOG"
@@ -180,32 +180,32 @@ TOML
     [ "$status" -eq 0 ]
     [ ! -s "$UV_STUB_LOG" ]
     [ ! -s "$JARVIS_STUB_LOG" ]
-    assert_analytics_preference "$OPENJARVIS_HOME/config.toml" true true
-    grep -q '# Preserve user settings and comments.' "$OPENJARVIS_HOME/config.toml"
-    grep -q '# Previous choice.' "$OPENJARVIS_HOME/config.toml"
-    grep -q 'default = "ollama"' "$OPENJARVIS_HOME/config.toml"
-    grep -q 'flush_at_size = 7' "$OPENJARVIS_HOME/config.toml"
+    assert_analytics_preference "$ULTRONX_HOME/config.toml" true true
+    grep -q '# Preserve user settings and comments.' "$ULTRONX_HOME/config.toml"
+    grep -q '# Previous choice.' "$ULTRONX_HOME/config.toml"
+    grep -q 'default = "ollama"' "$ULTRONX_HOME/config.toml"
+    grep -q 'flush_at_size = 7' "$ULTRONX_HOME/config.toml"
 }
 
-@test "consent respects OPENJARVIS_CONFIG instead of changing the default config" {
+@test "consent respects ULTRONX_CONFIG instead of changing the default config" {
     run bash "$SCRIPT" --no-bg-orchestrator --minimal --no-analytics
     [ "$status" -eq 0 ]
-    export OPENJARVIS_CONFIG="$TEST_TMPDIR/custom config.toml"
-    printf '# Custom config\n[engine]\ndefault = "ollama"\n' > "$OPENJARVIS_CONFIG"
+    export ULTRONX_CONFIG="$TEST_TMPDIR/custom config.toml"
+    printf '# Custom config\n[engine]\ndefault = "ollama"\n' > "$ULTRONX_CONFIG"
     run bash "$SCRIPT" --no-bg-orchestrator --minimal --analytics
     [ "$status" -eq 0 ]
-    assert_analytics_preference "$OPENJARVIS_CONFIG" true true
-    assert_analytics_preference "$OPENJARVIS_HOME/config.toml" false true
-    grep -q '# Custom config' "$OPENJARVIS_CONFIG"
+    assert_analytics_preference "$ULTRONX_CONFIG" true true
+    assert_analytics_preference "$ULTRONX_HOME/config.toml" false true
+    grep -q '# Custom config' "$ULTRONX_CONFIG"
 }
 
-@test "consent follows the runtime XDG path when OPENJARVIS_HOME is unset" {
-    unset OPENJARVIS_HOME
+@test "consent follows the runtime XDG path when ULTRONX_HOME is unset" {
+    unset ULTRONX_HOME
     export XDG_DATA_HOME="$TEST_TMPDIR/xdg data"
     run bash "$SCRIPT" --no-bg-orchestrator --minimal --analytics
     [ "$status" -eq 0 ]
-    assert_analytics_preference "$XDG_DATA_HOME/openjarvis/config.toml" true true
-    [ ! -f "$HOME/.openjarvis/config.toml" ]
+    assert_analytics_preference "$XDG_DATA_HOME/ULTRONX/config.toml" true true
+    [ ! -f "$HOME/.ULTRONX/config.toml" ]
 }
 
 @test "contradictory analytics flags are rejected" {
@@ -229,21 +229,21 @@ IDEOF
     echo "$output" | grep -qi "root"
 }
 
-@test "creates ~/.openjarvis directory tree" {
+@test "creates ~/.ULTRONX directory tree" {
     run bash "$SCRIPT" --no-bg-orchestrator
     [ "$status" -eq 0 ]
-    [ -d "$OPENJARVIS_HOME/src" ]
-    [ -d "$OPENJARVIS_HOME/.state" ]
-    [ -d "$OPENJARVIS_HOME/.scripts" ]
+    [ -d "$ULTRONX_HOME/src" ]
+    [ -d "$ULTRONX_HOME/.state" ]
+    [ -d "$ULTRONX_HOME/.scripts" ]
 }
 
 @test "writes install-state.json on success" {
     run bash "$SCRIPT" --no-bg-orchestrator
     [ "$status" -eq 0 ]
-    [ -f "$OPENJARVIS_HOME/.state/install-state.json" ]
+    [ -f "$ULTRONX_HOME/.state/install-state.json" ]
 }
 
-@test "calls git clone for the OpenJarvis repo" {
+@test "calls git clone for the ULTRONX repo" {
     run bash "$SCRIPT" --no-bg-orchestrator
     grep -q "clone" "$GIT_STUB_LOG"
 }
@@ -264,9 +264,9 @@ IDEOF
 }
 
 @test "detects WSL2 and writes platform note to install-state" {
-    OPENJARVIS_FORCE_WSL=1 run bash "$SCRIPT" --no-bg-orchestrator
+    ULTRONX_FORCE_WSL=1 run bash "$SCRIPT" --no-bg-orchestrator
     [ "$status" -eq 0 ]
-    grep -q "wsl" "$OPENJARVIS_HOME/.state/install-state.json"
+    grep -q "wsl" "$ULTRONX_HOME/.state/install-state.json"
 }
 
 @test "fails loudly when git is missing" {
@@ -339,9 +339,9 @@ IDEOF
     PATH="$no_py_stubs" run bash "$SCRIPT" --no-bg-orchestrator --minimal
     [ "$status" -eq 0 ]
     # State file was still written (mark_done is Python-free).
-    [ -f "$OPENJARVIS_HOME/.state/install-state.json" ]
+    [ -f "$ULTRONX_HOME/.state/install-state.json" ]
     # And it still has valid-looking JSON for state_done's grep.
-    grep -q '"install_uv":' "$OPENJARVIS_HOME/.state/install-state.json"
+    grep -q '"install_uv":' "$ULTRONX_HOME/.state/install-state.json"
 }
 
 @test "mark_done is idempotent — second mark of same key doesn't duplicate" {
@@ -349,13 +349,13 @@ IDEOF
     [ "$status" -eq 0 ]
     # Capture first state file
     local first_count
-    first_count="$(grep -c '"install_uv":' "$OPENJARVIS_HOME/.state/install-state.json")"
+    first_count="$(grep -c '"install_uv":' "$ULTRONX_HOME/.state/install-state.json")"
     [ "$first_count" -eq 1 ]
     # Second run reuses state — keys should not duplicate even if some path re-marks.
     run bash "$SCRIPT" --no-bg-orchestrator
     [ "$status" -eq 0 ]
     local second_count
-    second_count="$(grep -c '"install_uv":' "$OPENJARVIS_HOME/.state/install-state.json")"
+    second_count="$(grep -c '"install_uv":' "$ULTRONX_HOME/.state/install-state.json")"
     [ "$second_count" -eq 1 ]
 }
 

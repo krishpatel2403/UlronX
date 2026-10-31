@@ -6,9 +6,9 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from openjarvis.agents._stubs import BaseAgent
-from openjarvis.agents.openhands import OpenHandsAgent
-from openjarvis.core.registry import AgentRegistry
+from ULTRONX.agents._stubs import BaseAgent
+from ULTRONX.agents.openhands import OpenHandsAgent
+from ULTRONX.core.registry import AgentRegistry
 
 
 class TestOpenHandsAgentRegistration:

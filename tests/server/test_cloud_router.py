@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from openjarvis.core.types import Message
-from openjarvis.server import cloud_router
+from ULTRONX.core.types import Message
+from ULTRONX.server import cloud_router
 
 
 @pytest.mark.parametrize(

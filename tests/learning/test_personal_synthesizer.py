@@ -8,16 +8,16 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from openjarvis.core.types import Trace
-from openjarvis.evals.core.types import EvalRecord
-from openjarvis.learning.optimize.personal.dataset import PersonalBenchmarkDataset
-from openjarvis.learning.optimize.personal.scorer import PersonalBenchmarkScorer
-from openjarvis.learning.optimize.personal.synthesizer import (
+from ULTRONX.core.types import Trace
+from ULTRONX.evals.core.types import EvalRecord
+from ULTRONX.learning.optimize.personal.dataset import PersonalBenchmarkDataset
+from ULTRONX.learning.optimize.personal.scorer import PersonalBenchmarkScorer
+from ULTRONX.learning.optimize.personal.synthesizer import (
     PersonalBenchmark,
     PersonalBenchmarkSample,
     PersonalBenchmarkSynthesizer,
 )
-from openjarvis.traces.store import TraceStore
+from ULTRONX.traces.store import TraceStore
 
 # ---------------------------------------------------------------------------
 # Helpers

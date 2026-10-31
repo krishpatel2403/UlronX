@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock
 
-from openjarvis.agents._stubs import AgentContext
-from openjarvis.agents.rlm import RLMAgent
-from openjarvis.core.events import EventBus, EventType
-from openjarvis.core.registry import AgentRegistry
-from openjarvis.core.types import ToolResult
-from openjarvis.tools._stubs import BaseTool, ToolSpec
+from ULTRONX.agents._stubs import AgentContext
+from ULTRONX.agents.rlm import RLMAgent
+from ULTRONX.core.events import EventBus, EventType
+from ULTRONX.core.registry import AgentRegistry
+from ULTRONX.core.types import ToolResult
+from ULTRONX.tools._stubs import BaseTool, ToolSpec
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -180,7 +180,7 @@ class TestRLMDirectAnswer:
         assert result.tool_results == []
 
     def test_default_deny_blocks_agent_before_generated_code(self):
-        from openjarvis.security.capabilities import CapabilityPolicy
+        from ULTRONX.security.capabilities import CapabilityPolicy
 
         class _RecordingLimiter:
             def __init__(self):

@@ -8,9 +8,9 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from openjarvis.agents._stubs import AgentResult, BaseAgent
-from openjarvis.core.events import EventBus, EventType
-from openjarvis.sandbox.runner import (
+from ULTRONX.agents._stubs import AgentResult, BaseAgent
+from ULTRONX.core.events import EventBus, EventType
+from ULTRONX.sandbox.runner import (
     _OUTPUT_END,
     _OUTPUT_START,
     ContainerRunner,

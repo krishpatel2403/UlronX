@@ -6,10 +6,10 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from openjarvis.channels._stubs import ChannelStatus
-from openjarvis.channels.webhook import WebhookChannel
-from openjarvis.core.events import EventBus, EventType
-from openjarvis.core.registry import ChannelRegistry
+from ULTRONX.channels._stubs import ChannelStatus
+from ULTRONX.channels.webhook import WebhookChannel
+from ULTRONX.core.events import EventBus, EventType
+from ULTRONX.core.registry import ChannelRegistry
 
 
 @pytest.fixture(autouse=True)

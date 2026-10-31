@@ -53,10 +53,10 @@ def main(
     and an overall assessment.
     """
     try:
-        from openjarvis import Jarvis
+        from ULTRONX import Jarvis
     except ImportError:
         click.echo(
-            "Error: openjarvis is not installed. "
+            "Error: ULTRONX is not installed. "
             "Install it with:  uv sync --extra dev",
             err=True,
         )

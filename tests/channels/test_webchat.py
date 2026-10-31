@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import pytest
 
-from openjarvis.channels._stubs import ChannelStatus
-from openjarvis.channels.webchat import WebChatChannel
-from openjarvis.core.events import EventBus, EventType
-from openjarvis.core.registry import ChannelRegistry
+from ULTRONX.channels._stubs import ChannelStatus
+from ULTRONX.channels.webchat import WebChatChannel
+from ULTRONX.core.events import EventBus, EventType
+from ULTRONX.core.registry import ChannelRegistry
 from tests.channels.channel_test_helpers import make_common_channel_tests
 
 

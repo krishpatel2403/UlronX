@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from openjarvis.core.types import StepType, Trace, TraceStep
-from openjarvis.traces.analyzer import StepTypeStats, TraceAnalyzer
-from openjarvis.traces.store import TraceStore
+from ULTRONX.core.types import StepType, Trace, TraceStep
+from ULTRONX.traces.analyzer import StepTypeStats, TraceAnalyzer
+from ULTRONX.traces.store import TraceStore
 
 
 def _make_trace(steps: list[TraceStep]) -> Trace:

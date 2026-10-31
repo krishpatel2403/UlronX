@@ -8,12 +8,12 @@ from typing import Any, Dict, List
 
 import pytest
 
-from openjarvis.core.events import EventBus
-from openjarvis.core.types import Message, Role
-from openjarvis.engine._stubs import InferenceEngine, StreamChunk
-from openjarvis.engine.multi import MultiEngine
-from openjarvis.security.guardrails import GuardrailsEngine
-from openjarvis.telemetry.instrumented_engine import InstrumentedEngine
+from ULTRONX.core.events import EventBus
+from ULTRONX.core.types import Message, Role
+from ULTRONX.engine._stubs import InferenceEngine, StreamChunk
+from ULTRONX.engine.multi import MultiEngine
+from ULTRONX.security.guardrails import GuardrailsEngine
+from ULTRONX.telemetry.instrumented_engine import InstrumentedEngine
 
 # ---------------------------------------------------------------------------
 # Fake engine that yields predetermined StreamChunks via stream_full

@@ -1,0 +1,10 @@
+[package]
+name = "ULTRONX-recipes"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ULTRONX-core = { path = "../ULTRONX-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }

@@ -7,11 +7,11 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from openjarvis.agents._stubs import AgentResult
-from openjarvis.agents.deep_research import DeepResearchAgent
-from openjarvis.connectors.store import KnowledgeStore
-from openjarvis.core.registry import AgentRegistry
-from openjarvis.tools.knowledge_search import KnowledgeSearchTool
+from ULTRONX.agents._stubs import AgentResult
+from ULTRONX.agents.deep_research import DeepResearchAgent
+from ULTRONX.connectors.store import KnowledgeStore
+from ULTRONX.core.registry import AgentRegistry
+from ULTRONX.tools.knowledge_search import KnowledgeSearchTool
 
 # ---------------------------------------------------------------------------
 # Fixtures

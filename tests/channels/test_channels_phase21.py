@@ -7,18 +7,18 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from openjarvis.channels._stubs import ChannelStatus
-from openjarvis.channels.line_channel import LineChannel
-from openjarvis.channels.mastodon_channel import MastodonChannel
-from openjarvis.channels.messenger_channel import MessengerChannel
-from openjarvis.channels.nostr_channel import NostrChannel
-from openjarvis.channels.reddit_channel import RedditChannel
-from openjarvis.channels.rocketchat_channel import RocketChatChannel
-from openjarvis.channels.twitch_channel import TwitchChannel
-from openjarvis.channels.viber_channel import ViberChannel
-from openjarvis.channels.xmpp_channel import XMPPChannel
-from openjarvis.channels.zulip_channel import ZulipChannel
-from openjarvis.core.registry import ChannelRegistry
+from ULTRONX.channels._stubs import ChannelStatus
+from ULTRONX.channels.line_channel import LineChannel
+from ULTRONX.channels.mastodon_channel import MastodonChannel
+from ULTRONX.channels.messenger_channel import MessengerChannel
+from ULTRONX.channels.nostr_channel import NostrChannel
+from ULTRONX.channels.reddit_channel import RedditChannel
+from ULTRONX.channels.rocketchat_channel import RocketChatChannel
+from ULTRONX.channels.twitch_channel import TwitchChannel
+from ULTRONX.channels.viber_channel import ViberChannel
+from ULTRONX.channels.xmpp_channel import XMPPChannel
+from ULTRONX.channels.zulip_channel import ZulipChannel
+from ULTRONX.core.registry import ChannelRegistry
 
 # (class, registry key, library module name, pip package name)
 CHANNELS = [

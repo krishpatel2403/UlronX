@@ -9,9 +9,9 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from openjarvis.analytics.client import AnalyticsClient
-from openjarvis.core.config import AnalyticsConfig, JarvisConfig, load_config
-from openjarvis.server import analytics_routes
+from ULTRONX.analytics.client import AnalyticsClient
+from ULTRONX.core.config import AnalyticsConfig, JarvisConfig, load_config
+from ULTRONX.server import analytics_routes
 
 
 def test_missing_analytics_section_defaults_off(tmp_path: Path) -> None:

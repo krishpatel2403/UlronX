@@ -6,7 +6,7 @@ import json
 
 import pytest
 
-from openjarvis.sandbox.mount_security import (
+from ULTRONX.sandbox.mount_security import (
     DEFAULT_BLOCKED_PATTERNS,
     AllowedRoot,
     MountAllowlist,

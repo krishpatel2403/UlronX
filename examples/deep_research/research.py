@@ -50,10 +50,10 @@ def main(
     """
     # Lazy import so that --help works without a running engine or heavy deps.
     try:
-        from openjarvis import Jarvis
+        from ULTRONX import Jarvis
     except ImportError:
         click.echo(
-            "Error: openjarvis is not installed. "
+            "Error: ULTRONX is not installed. "
             "Install it with:  uv sync --extra dev",
             err=True,
         )

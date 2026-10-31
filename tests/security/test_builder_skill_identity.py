@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
-from openjarvis.core.config import JarvisConfig
-from openjarvis.core.types import ToolCall
-from openjarvis.security.capabilities import CapabilityPolicy
-from openjarvis.skills.executor import SkillExecutor
-from openjarvis.skills.tool_adapter import SkillTool
-from openjarvis.skills.types import SkillManifest, SkillStep
-from openjarvis.system import SystemBuilder
-from openjarvis.tools.repl import ReplTool
+from ULTRONX.core.config import JarvisConfig
+from ULTRONX.core.types import ToolCall
+from ULTRONX.security.capabilities import CapabilityPolicy
+from ULTRONX.skills.executor import SkillExecutor
+from ULTRONX.skills.tool_adapter import SkillTool
+from ULTRONX.skills.types import SkillManifest, SkillStep
+from ULTRONX.system import SystemBuilder
+from ULTRONX.tools.repl import ReplTool
 
 
 class _HealthyEngine:
@@ -68,7 +68,7 @@ def test_builder_nested_skill_cannot_fall_back_to_default_identity(
     repl = ReplTool()
 
     monkeypatch.setattr(
-        "openjarvis.security.setup_security",
+        "ULTRONX.security.setup_security",
         lambda config, engine, bus: SimpleNamespace(
             engine=engine,
             capability_policy=policy,
@@ -76,7 +76,7 @@ def test_builder_nested_skill_cannot_fall_back_to_default_identity(
             audit_logger=None,
         ),
     )
-    monkeypatch.setattr("openjarvis.skills.manager.SkillManager", _PipelineSkillManager)
+    monkeypatch.setattr("ULTRONX.skills.manager.SkillManager", _PipelineSkillManager)
 
     builder = (
         SystemBuilder(config)

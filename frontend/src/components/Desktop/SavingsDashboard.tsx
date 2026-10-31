@@ -267,10 +267,10 @@ function isProfane(text: string): boolean {
   return false;
 }
 
-const OPTIN_KEY = 'openjarvis-desktop-optin';
-const OPTIN_NAME_KEY = 'openjarvis-desktop-display-name';
-const OPTIN_EMAIL_KEY = 'openjarvis-desktop-email';
-const OPTIN_ANONID_KEY = 'openjarvis-desktop-anon-id';
+const OPTIN_KEY = 'ULTRONX-desktop-optin';
+const OPTIN_NAME_KEY = 'ULTRONX-desktop-display-name';
+const OPTIN_EMAIL_KEY = 'ULTRONX-desktop-email';
+const OPTIN_ANONID_KEY = 'ULTRONX-desktop-anon-id';
 
 function getOrCreateAnonId(): string {
   const stored = localStorage.getItem(OPTIN_ANONID_KEY);
@@ -543,7 +543,7 @@ export function SavingsDashboard({ apiUrl }: { apiUrl: string }) {
             {optInEnabled ? `Sharing as "${displayName}"` : 'Share Your Savings'}
           </button>
           <a
-            href="https://open-jarvis.github.io/OpenJarvis/leaderboard"
+            href="https://ultronx.github.io/ULTRONX/leaderboard"
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontSize: 12, color: colors.accent, textDecoration: 'none' }}

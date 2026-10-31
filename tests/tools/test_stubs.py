@@ -6,11 +6,11 @@ import json
 
 import pytest
 
-from openjarvis.core.events import EventBus, EventType
-from openjarvis.core.types import ToolCall, ToolResult
-from openjarvis.security.capabilities import DEFAULT_TOOL_CAPABILITIES
-from openjarvis.tools._stubs import BaseTool, ToolExecutor, ToolSpec
-from openjarvis.tools.code_interpreter import CodeInterpreterTool
+from ULTRONX.core.events import EventBus, EventType
+from ULTRONX.core.types import ToolCall, ToolResult
+from ULTRONX.security.capabilities import DEFAULT_TOOL_CAPABILITIES
+from ULTRONX.tools._stubs import BaseTool, ToolExecutor, ToolSpec
+from ULTRONX.tools.code_interpreter import CodeInterpreterTool
 
 # ---------------------------------------------------------------------------
 # Helpers

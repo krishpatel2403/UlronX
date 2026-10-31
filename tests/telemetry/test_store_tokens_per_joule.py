@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from openjarvis.core.types import TelemetryRecord
-from openjarvis.telemetry.aggregator import TelemetryAggregator
-from openjarvis.telemetry.store import TelemetryStore
+from ULTRONX.core.types import TelemetryRecord
+from ULTRONX.telemetry.aggregator import TelemetryAggregator
+from ULTRONX.telemetry.store import TelemetryStore
 
 
 class TestTokensPerJouleStorage:

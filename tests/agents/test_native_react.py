@@ -7,12 +7,12 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from openjarvis.agents._stubs import AgentContext
-from openjarvis.agents.native_react import NativeReActAgent
-from openjarvis.core.events import EventBus, EventType
-from openjarvis.core.registry import AgentRegistry
-from openjarvis.core.types import Conversation, Message, Role, ToolResult
-from openjarvis.tools._stubs import BaseTool, ToolSpec
+from ULTRONX.agents._stubs import AgentContext
+from ULTRONX.agents.native_react import NativeReActAgent
+from ULTRONX.core.events import EventBus, EventType
+from ULTRONX.core.registry import AgentRegistry
+from ULTRONX.core.types import Conversation, Message, Role, ToolResult
+from ULTRONX.tools._stubs import BaseTool, ToolSpec
 
 # ---------------------------------------------------------------------------
 # Helpers
